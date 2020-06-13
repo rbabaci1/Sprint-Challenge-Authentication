@@ -8,4 +8,4 @@ const insert = async newUser => {
   return findBy({ id });
 };
 
-module.exports = { insert };
+module.exports = { insert, findBy };
