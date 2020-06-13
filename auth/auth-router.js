@@ -2,6 +2,7 @@ const router = require("express").Router();
 const bcrypt = require("bcrypt");
 
 const Users = require("../users/users-model");
+const generateToken = require("../utils/generateToken");
 
 router.post("/register", async (req, res) => {
   try {
@@ -32,12 +33,10 @@ router.post("/login", async (req, res) => {
       res.status(401).json({ message: "Invalid credentials. Try again?" });
     }
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        message: "This user could not login at this moment.",
-        reason: error.message,
-      });
+    res.status(500).json({
+      message: "This user could not login at this moment.",
+      reason: error.message,
+    });
   }
 });
 
