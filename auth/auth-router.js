@@ -10,8 +10,9 @@ router.post("/register", async (req, res) => {
     const hash = bcrypt.hashSync(user.password, 8);
 
     const addedUser = await Users.insert({ ...user, password: hash });
+    const token = generateToken(addedUser);
 
-    res.status(201).json(addedUser);
+    res.status(201).json({ addedUser, token });
   } catch (error) {
     res.status(500).json({
       message: "This user could not be added at this moment.",
