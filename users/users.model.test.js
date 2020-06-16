@@ -3,7 +3,6 @@ const Users = require("./users-model");
 const mockData = require("../utils/mockData");
 
 describe("testing the users models", () => {
-  it("", () => {});
   beforeEach(async () => {
     await db("users").truncate();
   });
